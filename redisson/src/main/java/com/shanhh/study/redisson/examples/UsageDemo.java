@@ -2,13 +2,11 @@ package com.shanhh.study.redisson.examples;
 
 import com.shanhh.study.redisson.examples.beans.User;
 import io.netty.util.concurrent.Future;
-import lombok.Data;
-import lombok.ToString;
 import org.apache.commons.lang3.RandomUtils;
 import org.redisson.Redisson;
 import org.redisson.core.RBucket;
+import org.redisson.core.RMap;
 
-import java.io.Serializable;
 import java.util.UUID;
 
 /**
@@ -26,6 +24,9 @@ public class UsageDemo {
         return user;
     }
 
+    /**
+     * Distributed Object storage example
+     */
     public void demoObjectStorage() {
         System.out.println("demoObjectStorage");
         Redisson redisson = new ConfigExample().getConfig(host);
@@ -48,13 +49,41 @@ public class UsageDemo {
         redisson.shutdown();
     }
 
-    
+    /**
+     * Distributed Map example
+     */
+    public void demoMap() {
+        System.out.println("demoMap");
+        Redisson redisson = new ConfigExample().getConfig(host);
+
+        RMap<String, User> map = redisson.getMap("userMap");
+        User prevObject = map.put("123", generateUser());
+        User currentObject = map.putIfAbsent("323", generateUser());
+        User obj = map.remove("123");
+
+        System.out.println(redisson.getMap("userMap"));
+
+        map.fastPut("321", generateUser());
+        map.fastRemove("321");
+
+        System.out.println(redisson.getMap("userMap"));
+//        Future<User> putAsyncFuture = map.putAsync("321");
+//        Future<Void> fastPutAsyncFuture = map.fastPutAsync("321");
+//
+//        map.fastPutAsync("321", generateUser());
+//        map.fastRemoveAsync("321");
+
+        redisson.shutdown();
+    }
 
     public static void main(String[] args) {
         UsageDemo demo = new UsageDemo();
 
         demo.demoObjectStorage();
         demo.demoObjectStorageAsync();
+        demo.demoMap();
+
+        System.exit(0);
     }
 
 }
