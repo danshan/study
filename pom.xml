@@ -22,6 +22,7 @@
         <!-- Maven -->
         <maven.compiler.version>2.3.2</maven.compiler.version>
         <maven.source.version>2.1</maven.source.version>
+        <maven.jetty.version>6.1.16</maven.jetty.version>
 
         <!-- Common -->
         <commons-lang3.version>3.3.2</commons-lang3.version>
@@ -76,6 +77,15 @@
                             </goals>
                         </execution>
                     </executions>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.mortbay.jetty</groupId>
+                    <artifactId>maven-jetty-plugin</artifactId>
+                    <version>${maven.jetty.version}</version>
+                    <configuration>
+                        <contextPath>/</contextPath>
+                    </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>
