@@ -1,4 +1,4 @@
-package com.shanhh.testcase.demo.service;
+package com.shanhh.study.unittest.service;
 
 /**
  * @author dan.shan

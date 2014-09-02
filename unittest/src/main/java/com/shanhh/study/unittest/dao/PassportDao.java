@@ -1,5 +1,6 @@
-package com.shanhh.testcase.demo.dao;
+package com.shanhh.study.unittest.dao;
 
+import com.shanhh.study.unittest.po.PassportPO;
 import org.springframework.stereotype.Repository;
 
 /**

@@ -1,7 +1,7 @@
-package com.shanhh.testcase.demo.service;
+package com.shanhh.study.unittest.service;
 
-import com.shanhh.testcase.demo.repository.PassportRepository;
-import com.shanhh.testcase.demo.utils.RegexUtils;
+import com.shanhh.study.unittest.repository.PassportRepository;
+import com.shanhh.study.unittest.utils.RegexUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

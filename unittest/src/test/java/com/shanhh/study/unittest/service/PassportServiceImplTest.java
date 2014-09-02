@@ -1,4 +1,4 @@
-package com.shanhh.testcase.demo.service;
+package com.shanhh.study.unittest.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;

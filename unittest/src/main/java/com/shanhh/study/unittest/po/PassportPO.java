@@ -1,4 +1,4 @@
-package com.shanhh.testcase.demo.dao;
+package com.shanhh.study.unittest.po;
 
 import lombok.Data;
 import lombok.ToString;

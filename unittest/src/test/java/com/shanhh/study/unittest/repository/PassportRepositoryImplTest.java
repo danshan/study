@@ -1,4 +1,4 @@
-package com.shanhh.testcase.demo.repository;
+package com.shanhh.study.unittest.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;

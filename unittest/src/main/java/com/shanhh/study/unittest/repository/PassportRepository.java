@@ -1,4 +1,4 @@
-package com.shanhh.testcase.demo.repository;
+package com.shanhh.study.unittest.repository;
 
 /**
  * @author dan.shan

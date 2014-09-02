@@ -1,6 +1,6 @@
-package com.shanhh.testcase.demo.service;
+package com.shanhh.study.unittest.service;
 
-import com.shanhh.testcase.demo.repository.PassportRepository;
+import com.shanhh.study.unittest.repository.PassportRepository;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -11,7 +11,6 @@ import java.util.UUID;
 
 import static org.mockito.Mockito.*;
 import static org.testng.AssertJUnit.assertEquals;
-import static org.testng.AssertJUnit.assertTrue;
 
 /**
  * base class for test service framework

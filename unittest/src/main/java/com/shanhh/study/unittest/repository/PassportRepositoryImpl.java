@@ -1,7 +1,7 @@
-package com.shanhh.testcase.demo.repository;
+package com.shanhh.study.unittest.repository;
 
-import com.shanhh.testcase.demo.dao.PassportDao;
-import com.shanhh.testcase.demo.dao.PassportPO;
+import com.shanhh.study.unittest.dao.PassportDao;
+import com.shanhh.study.unittest.po.PassportPO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
