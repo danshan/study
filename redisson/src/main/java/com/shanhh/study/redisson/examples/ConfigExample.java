@@ -13,10 +13,10 @@ import java.util.List;
  */
 public class ConfigExample {
 
-    // single server
+    // single service
 
     /**
-     * connects to default Redis server 127.0.0.1:6379
+     * connects to default Redis service 127.0.0.1:6379
      * @return
      */
     public Redisson getConfig() {
@@ -24,7 +24,7 @@ public class ConfigExample {
     }
 
     /**
-     * connects to single Redis server via Config
+     * connects to single Redis service via Config
      * @param host ip:port
      * @return
      */

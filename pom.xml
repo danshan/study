@@ -18,14 +18,17 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.verison>1.6</java.verison>
-        <!-- maven -->
 
+        <!-- Maven -->
         <maven.compiler.version>2.3.2</maven.compiler.version>
         <maven.source.version>2.1</maven.source.version>
 
-        <!-- common -->
+        <!-- Common -->
         <commons-lang3.version>3.3.2</commons-lang3.version>
         <lombok.version>0.11.6</lombok.version>
+
+        <!-- Web -->
+        <servlet-api.version>2.5</servlet-api.version>
 
         <!-- TestNG/Mock-->
         <testng.version>6.8.5</testng.version>
@@ -80,16 +83,23 @@
 
     <dependencyManagement>
         <dependencies>
+            <!-- Common -->
             <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-lang3</artifactId>
                 <version>${commons-lang3.version}</version>
             </dependency>
-
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
+            </dependency>
+
+            <!-- Web -->
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>servlet-api</artifactId>
+                <version>${servlet-api.version}</version>
             </dependency>
 
             <!-- TestNG/MOCK -->
