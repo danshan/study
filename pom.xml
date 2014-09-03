@@ -13,6 +13,7 @@
         <module>redisson</module>
         <module>spring</module>
         <module>unittest</module>
+        <module>jedis</module>
     </modules>
 
     <properties>
@@ -27,6 +28,7 @@
         <!-- Common -->
         <commons-lang3.version>3.3.2</commons-lang3.version>
         <lombok.version>0.11.6</lombok.version>
+        <commons-pool2.version>2.2</commons-pool2.version>
 
         <!-- Web -->
         <servlet-api.version>2.5</servlet-api.version>
@@ -46,6 +48,7 @@
         <h2.version>1.3.173</h2.version>
 
         <!-- Redis -->
+        <jedis.version>2.1.0</jedis.version>
         <redisson.version>1.1.5</redisson.version>
     </properties>
 
@@ -103,6 +106,11 @@
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-pool2</artifactId>
+                <version>${commons-pool2.version}</version>
             </dependency>
 
             <!-- Web -->
@@ -181,6 +189,11 @@
                 <version>${h2.version}</version>
             </dependency>
             <!-- Redis -->
+            <dependency>
+                <groupId>redis.clients</groupId>
+                <artifactId>jedis</artifactId>
+                <version>${jedis.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.redisson</groupId>
                 <artifactId>redisson</artifactId>

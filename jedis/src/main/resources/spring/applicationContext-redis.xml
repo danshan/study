@@ -1,0 +1,19 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+        <property name="maxIdle" value="${redis.user_info.max_idle}"/>
+        <property name="maxActive" value="${redis.user_info.max_active}"/>
+        <property name="maxWait" value="${redis.user_info.max_wait}"/>
+        <property name="testOnBorrow" value="${redis.user_info.test_on_borrow}"/>
+    </bean>
+
+    <bean id="jedisPool" class="com.shanhh.study.jedis.service.ShardRedisServiceImpl">
+        <constructor-arg index="0" ref="jedisPoolConfig"/>
+        <constructor-arg index="1" value="${redis.user_info.hosts}"/>
+        <constructor-arg index="2" value="${redis.user_info.timeout}"/>
+    </bean>
+
+</beans>
