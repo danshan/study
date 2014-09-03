@@ -1,6 +1,7 @@
 package com.shanhh.study.jedis.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisShardInfo;
 import redis.clients.jedis.ShardedJedis;
@@ -14,6 +15,7 @@ import java.util.Map;
  * @author dan.shan
  * @since 2014-09-03 11:18
  */
+@Service
 public class MonitorServiceImpl implements MonitorService {
 
     @Autowired
