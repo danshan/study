@@ -1,4 +1,4 @@
-package com.shanhh.study.jedis.service;
+package com.shanhh.study.jedis.utils;
 
 import org.apache.commons.pool.impl.GenericObjectPool;
 import org.springframework.beans.factory.FactoryBean;
@@ -14,7 +14,7 @@ import java.util.List;
  * @author dan.shan
  * @since 2014-09-02 18:51
  */
-public class ShardRedisServiceImpl implements FactoryBean<ShardedJedisPool> {
+public class ShardJedisPool implements FactoryBean<ShardedJedisPool> {
 
     private ShardedJedisPool jedisPool;
 
@@ -25,7 +25,7 @@ public class ShardRedisServiceImpl implements FactoryBean<ShardedJedisPool> {
      * @param hosts the hosts
      * @param timeout the timeout
      */
-    public ShardRedisServiceImpl(final GenericObjectPool.Config poolConfig, final String hosts, int timeout) {
+    public ShardJedisPool(final GenericObjectPool.Config poolConfig, final String hosts, int timeout) {
         List<String> hostList = Arrays.asList(hosts.split(","));
         List<JedisShardInfo> shardInfos = new ArrayList<JedisShardInfo>();
         JedisShardInfo jedisShardInfo;

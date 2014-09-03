@@ -29,6 +29,7 @@
         <commons-lang3.version>3.3.2</commons-lang3.version>
         <lombok.version>0.11.6</lombok.version>
         <commons-pool2.version>2.2</commons-pool2.version>
+        <fastjson.veriosn>1.1.41</fastjson.veriosn>
 
         <!-- Web -->
         <servlet-api.version>2.5</servlet-api.version>
@@ -111,6 +112,11 @@
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-pool2</artifactId>
                 <version>${commons-pool2.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.veriosn}</version>
             </dependency>
 
             <!-- Web -->

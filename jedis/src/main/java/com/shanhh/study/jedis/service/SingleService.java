@@ -4,9 +4,9 @@ import com.shanhh.study.jedis.bean.User;
 
 /**
  * @author dan.shan
- * @since 2014-09-02 19:38
+ * @since 2014-09-03 15:07
  */
-public interface UserService {
+public interface SingleService {
 
     void saveUser(User user);
     User findUser(int userId);
