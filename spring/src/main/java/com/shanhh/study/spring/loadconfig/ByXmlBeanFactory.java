@@ -14,6 +14,7 @@ import org.springframework.core.io.Resource;
 public class ByXmlBeanFactory {
 
     public static void main(String[] args) {
+        // 这种情况经测试  <context:property-placeholder"/> 这个配置会失效, 最好还是使用 ByClassPathXmlApplicationContext
         Resource resource = new ClassPathResource("applicationContext.xml");
         BeanFactory factory = new XmlBeanFactory(resource);
 
