@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                http://www.springframework.org/schema/aop
+                http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+				http://www.springframework.org/schema/tx
+                http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+
+    <!-- bean config for database and c3p0 -->
+    <bean id="parentDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+        <property name="driverClass" value="${db.default.driver}" />
+        <property name="idleConnectionTestPeriod" value="${pool.c3p0.idle_connection_test_period}" />
+        <property name="preferredTestQuery" value="${pool.c3p0.preferred_test_query}" />
+        <property name="maxIdleTime" value="${pool.c3p0.max_idle_time}" />
+        <!-- 当连接池里面的链接用完的时候, c3p0一次性获取的连接数 -->
+        <property name="acquireIncrement" value="${pool.c3p0.acquire_increment}" />
+        <!-- 最大连接数 -->
+        <property name="maxPoolSize" value="${pool.c3p0.max_size}" />
+        <!-- 最小连接数 -->
+        <property name="minPoolSize" value="${pool.c3p0.min_size}" />
+    </bean>
+
+    <bean id="dataSource" class="com.shanhh.study.mybatis.database.DynamicDataSource">
+        <property name="targetDataSources">
+            <map key-type="java.lang.String">
+                <entry key="shop_master" value-ref="dsShopMaster"/>
+                <entry key="shop_slave" value-ref="dsShopSlave"/>
+                <entry key="pic_master" value-ref="dsPicMaster"/>
+                <entry key="pic_slave" value-ref="dsPicSlave"/>
+            </map>
+        </property>
+        <property name="defaultTargetDataSource" ref="dsShopSlave" />
+    </bean>
+
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+
+    <!-- Spring iBatis SqlMapClient -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="typeAliasesPackage" value="com.vipshop.user.info.dao.bean" />
+    </bean>
+
+    <!-- scan for mappers and let them be autowired -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.vipshop.user.info.dao" />
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+    </bean>
+
+    <bean id="dataSourceAdvice" class="com.shanhh.study.mybatis.database.DataSourceAdvice" />
+    <aop:config>
+        <aop:advisor advice-ref="dataSourceAdvice" pointcut="execution(* com.shanhh.study.mybatis.repository..*Repo.*(..))"/>
+    </aop:config>
+
+    <tx:annotation-driven/>
+
+    <!-- multi datasource -->
+    <import resource="applicationContext-db-shop.xml" />
+    <import resource="applicationContext-db-pic.xml" />
+
+</beans>

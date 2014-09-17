@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <!-- pic 主数据源 -->
+    <bean id="dsPicMaster" parent="parentDataSource">
+        <property name="jdbcUrl" value="${db.pic.url.master}"/>
+        <property name="user" value="${db.pic.user.master}"/>
+        <property name="password" value="${db.pic.password.master}"/>
+    </bean>
+    <!-- pic 从数据源 -->
+    <bean id="dsPicSlave" parent="parentDataSource">
+        <property name="jdbcUrl" value="${db.pic.url.slave}"/>
+        <property name="user" value="${db.pic.user.slave}"/>
+        <property name="password" value="${db.pic.password.slave}"/>
+    </bean>
+
+</beans>

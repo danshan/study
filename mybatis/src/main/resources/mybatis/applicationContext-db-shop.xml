@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <!-- shop 主数据源 -->
+    <bean id="dsShopMaster" parent="parentDataSource">
+        <property name="jdbcUrl" value="${db.shop.url.master}"/>
+        <property name="user" value="${db.shop.user.master}"/>
+        <property name="password" value="${db.shop.password.master}"/>
+    </bean>
+    <!-- shop 从数据源 -->
+    <bean id="dsShopSlave" parent="parentDataSource">
+        <property name="jdbcUrl" value="${db.shop.url.slave}"/>
+        <property name="user" value="${db.shop.user.slave}"/>
+        <property name="password" value="${db.shop.password.slave}"/>
+    </bean>
+
+</beans>

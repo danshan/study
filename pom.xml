@@ -32,6 +32,10 @@
         <commons-pool2.version>2.2</commons-pool2.version>
         <fastjson.veriosn>1.1.41</fastjson.veriosn>
 
+        <!-- Log -->
+        <logback.version>1.0.9</logback.version>
+        <slf4j.version>1.7.2</slf4j.version>
+
         <!-- Web -->
         <servlet-api.version>2.5</servlet-api.version>
 
@@ -118,6 +122,28 @@
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
                 <version>${fastjson.veriosn}</version>
+            </dependency>
+
+            <!-- LOG -->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>jcl-over-slf4j</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-core</artifactId>
+                <version>${logback.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>${logback.version}</version>
             </dependency>
 
             <!-- Web -->
