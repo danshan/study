@@ -33,7 +33,7 @@
         <fastjson.veriosn>1.1.41</fastjson.veriosn>
 
         <!--aspectjweaver-->
-        <aspectJVersion>1.5.4</aspectJVersion>
+        <aspectj.version>1.5.4</aspectj.version>
 
         <!-- Log -->
         <logback.version>1.0.9</logback.version>
@@ -131,7 +131,7 @@
             <dependency>
                 <groupId>org.aspectj</groupId>
                 <artifactId>aspectjweaver</artifactId>
-                <version>${aspectJ.version}</version>
+                <version>${aspectj.version}</version>
             </dependency>
 
             <!-- LOG -->
