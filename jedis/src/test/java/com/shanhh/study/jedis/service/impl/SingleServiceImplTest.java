@@ -1,7 +1,6 @@
 package com.shanhh.study.jedis.service.impl;
 
 import com.shanhh.study.jedis.bean.User;
-import com.shanhh.study.jedis.service.ShardService;
 import com.shanhh.study.jedis.service.SingleService;
 import org.apache.commons.lang3.RandomUtils;
 import org.springframework.test.context.ContextConfiguration;

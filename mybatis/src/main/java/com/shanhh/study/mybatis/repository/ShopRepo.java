@@ -1,5 +1,7 @@
 package com.shanhh.study.mybatis.repository;
 
+import com.shanhh.study.mybatis.database.Datasource;
+import com.shanhh.study.mybatis.database.DatasourceEnum;
 import com.shanhh.study.mybatis.domain.Shop;
 
 import java.util.List;
@@ -10,7 +12,8 @@ import java.util.List;
  */
 public interface ShopRepo {
 
-    int save(Shop userPO);
+    @Datasource(dataSource = DatasourceEnum.SHOP_MASTER)
+    int save(Shop user);
 
     List<Shop> listByCity(String city);
 
