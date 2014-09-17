@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shanhh.study.mybatis.dao.ShopDao">
+
+    <sql id="insertColumn">
+        shop_name,
+        <if test="city != null">
+            city,
+        </if>
+        create_time
+    </sql>
+
+    <sql id="selectColumn">
+        id shopId,
+        shop_name shopName,
+        city,
+        create_time createTime,
+        update_time updateTime
+    </sql>
+
+    <insert id="save" parameterType="ShopPO" useGeneratedKeys="true" keyProperty="shopId" keyColumn="id">
+        INSERT INTO shop
+        ( <include refid="insertColumn"/> )
+        VALUES (
+            #{shopName},
+            <if test="city != null">
+                #{city},
+            </if>
+            now()
+        )
+    </insert>
+
+    <select id="listByCity" parameterType="string" resultType="ShopPO">
+        SELECT
+        <include refid="selectColumn"/>
+        FROM shop
+        <where>
+            AND city = #{city}
+        </where>
+    </select>
+
+    <select id="find" parameterType="int" resultType="ShopPO">
+        SELECT
+        <include refid="selectColumn"/>
+        FROM shop
+        <where>
+            AND id = #{shopId}
+        </where>
+        LIMIT 1
+    </select>
+
+</mapper>
+

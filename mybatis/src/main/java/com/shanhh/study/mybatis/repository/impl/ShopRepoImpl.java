@@ -22,7 +22,11 @@ public class ShopRepoImpl implements ShopRepo {
 
     @Override
     public int save(Shop shop) {
-        return shopDao.save(new ShopPO(shop));
+        ShopPO po = new ShopPO(shop);
+        int result = shopDao.save(po);
+
+        shop.setShopId(po.getShopId());
+        return result;
     }
 
     @Override
