@@ -15,6 +15,7 @@
         <module>unittest</module>
         <module>jedis</module>
         <module>mybatis</module>
+        <module>netty3</module>
     </modules>
 
     <properties>
@@ -32,7 +33,7 @@
         <commons-pool2.version>2.2</commons-pool2.version>
         <fastjson.veriosn>1.1.41</fastjson.veriosn>
 
-        <!--aspectjweaver-->
+        <!-- Aspectjweaver -->
         <aspectj.version>1.5.4</aspectj.version>
 
         <!-- Log -->
@@ -59,6 +60,9 @@
         <!-- Redis -->
         <jedis.version>2.1.0</jedis.version>
         <redisson.version>1.1.5</redisson.version>
+
+        <!-- Netty 3 -->
+        <netty.version>3.6.6.Final</netty.version>
     </properties>
 
     <build>
@@ -245,6 +249,13 @@
                 <groupId>org.redisson</groupId>
                 <artifactId>redisson</artifactId>
                 <version>${redisson.version}</version>
+            </dependency>
+
+            <!-- Netty -->
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty</artifactId>
+                <version>${netty.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
