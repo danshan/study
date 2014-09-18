@@ -16,6 +16,7 @@
         <module>jedis</module>
         <module>mybatis</module>
         <module>netty3</module>
+        <module>hessian</module>
     </modules>
 
     <properties>
@@ -63,6 +64,9 @@
 
         <!-- Netty 3 -->
         <netty.version>3.6.6.Final</netty.version>
+
+        <!-- Hessian -->
+        <hessian.version>4.0.7</hessian.version>
     </properties>
 
     <build>
@@ -172,11 +176,13 @@
                 <groupId>org.testng</groupId>
                 <artifactId>testng</artifactId>
                 <version>${testng.version}</version>
+                <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>org.mockito</groupId>
                 <artifactId>mockito-all</artifactId>
                 <version>${mockito.version}</version>
+                <scope>test</scope>
             </dependency>
 
             <!-- Spring -->
@@ -194,6 +200,7 @@
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-test</artifactId>
                 <version>${spring.version}</version>
+                <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
@@ -256,6 +263,13 @@
                 <groupId>io.netty</groupId>
                 <artifactId>netty</artifactId>
                 <version>${netty.version}</version>
+            </dependency>
+
+            <!-- Hessian -->
+            <dependency>
+                <groupId>com.caucho</groupId>
+                <artifactId>hessian</artifactId>
+                <version>${hessian.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
