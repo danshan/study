@@ -17,9 +17,12 @@
     <!-- enable autowire -->
     <context:annotation-config/>
 
-    <bean id="addService" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+    <bean id="addService" class="com.shanhh.study.hessian.demo.spring.factory.MyHessianProxyFactoryBean">
         <property name="serviceUrl" value="http://${service.hessian.host}:${service.hessian.port}/api/service/addService"/>
         <property name="serviceInterface" value="com.shanhh.study.hessian.demo.spring.AddService"/>
+
+        <property name="connectTimeOut" value="5000"/>
+        <property name="readTimeOut" value="5000"/>
     </bean>
 
 </beans>
