@@ -11,6 +11,12 @@
     <context:property-placeholder location="classpath:service.core.properties,
                                             classpath:service.hessian.properties"/>
 
+
+    <context:component-scan base-package="com.shanhh.study.hessian" />
+
+    <!-- enable autowire -->
+    <context:annotation-config/>
+
     <bean id="addService" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
         <property name="serviceUrl" value="http://${service.hessian.host}:${service.hessian.port}/api/service/addService"/>
         <property name="serviceInterface" value="com.shanhh.study.hessian.demo.spring.AddService"/>

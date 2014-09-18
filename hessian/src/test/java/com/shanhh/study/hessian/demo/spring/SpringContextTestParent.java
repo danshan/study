@@ -8,7 +8,7 @@ import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
  * @author dan.shan
  * @since 2014-09-17 16:07
  */
-@ContextConfiguration(locations = {"classpath:/spring/applicationContext.xml"})
+@ContextConfiguration(locations = {"classpath:/spring/applicationContext-hessian-client.xml"})
 public abstract class SpringContextTestParent extends AbstractTestNGSpringContextTests {
 
 }
