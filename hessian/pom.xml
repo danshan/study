@@ -10,6 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>hessian</artifactId>
+    <packaging>war</packaging>
 
     <build>
         <plugins>
@@ -22,7 +23,36 @@
                 <groupId>org.mortbay.jetty</groupId>
                 <artifactId>maven-jetty-plugin</artifactId>
             </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+            </plugin>
         </plugins>
+
+        <!-- 通过profile决定env, 根据env来试用不同的过滤文件来处理resources中的properties文件 -->
+        <filters>
+            <filter>src/main/resources/filters/filter-${env}.properties</filter>
+        </filters>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <excludes>
+                    <exclude>spring/*</exclude>
+                    <exclude>mybatis/*</exclude>
+                    <exclude>filters/*</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>false</filtering>
+                <includes>
+                    <include>spring/*</include>
+                    <include>mybatis/*</include>
+                </includes>
+            </resource>
+        </resources>
     </build>
 
     <dependencies>
@@ -71,6 +101,10 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+        </dependency>
 
         <!-- Web -->
         <dependency>
@@ -83,5 +117,25 @@
             <groupId>com.caucho</groupId>
             <artifactId>hessian</artifactId>
         </dependency>
+
+        <!-- Test -->
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+        </dependency>
     </dependencies>
+
+    <!-- 打包的不同profile -->
+    <profiles>
+        <!-- 开发人员测profile -->
+        <profile>
+            <id>dev</id>
+            <properties>
+                <env>dev</env>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+    </profiles>
 </project>

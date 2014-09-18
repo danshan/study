@@ -32,7 +32,7 @@
         <listener-class>ch.qos.logback.classic.selector.servlet.ContextDetachingSCL</listener-class>
     </listener>
     <listener>
-        <listener-class>org.springframework.web.context.ContextCleanupListener</listener-class>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
 
     <!-- servlet -->
@@ -63,6 +63,13 @@
         </init-param>
     </servlet>
 
+    <!-- spring -->
+    <servlet>
+        <servlet-name>hessian</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>helloworld</servlet-name>
         <url-pattern>/helloworld</url-pattern>
@@ -71,6 +78,11 @@
     <servlet-mapping>
         <servlet-name>upload</servlet-name>
         <url-pattern>/upload</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>hessian</servlet-name>
+        <url-pattern>/api/service/*</url-pattern>
     </servlet-mapping>
 </web-app>
 

@@ -13,10 +13,10 @@
 
     <!-- 按照每天生成日志文件 -->
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>/tmp/hessian.log</file>
+        <file>${log.file}</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!--日志文件输出的文件名 -->
-            <fileNamePattern>/tmp/hessian.log.%d{yyyy-MM-dd}.%i</fileNamePattern>
+            <fileNamePattern>${log.file}.%d{yyyy-MM-dd}.%i</fileNamePattern>
             <!--日志文件保留天数 -->
             <maxHistory>30</maxHistory>
             <cleanHistoryOnStart>true</cleanHistoryOnStart>
@@ -31,11 +31,11 @@
         </encoder>
     </appender>
 
-    <logger name="org.mybatis.spring.SqlSessionUtils" level="INFO">
+    <logger name="org.mybatis.spring.SqlSessionUtils" level="${log.level}">
         <appender-ref ref="STDOUT" />
     </logger>
 
-    <root level="INFO">
+    <root level="${log.level}">
         <appender-ref ref="STDOUT"/>
         <appender-ref ref="FILE"/>
     </root>
