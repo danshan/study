@@ -67,6 +67,9 @@
 
         <!-- Hessian -->
         <hessian.version>4.0.7</hessian.version>
+
+        <!-- Thrift -->
+        <thrift.version>0.9.1</thrift.version>
     </properties>
 
     <build>
@@ -276,6 +279,13 @@
                 <groupId>com.caucho</groupId>
                 <artifactId>hessian</artifactId>
                 <version>${hessian.version}</version>
+            </dependency>
+
+            <!-- Thrift -->
+            <dependency>
+                <groupId>org.apache.thrift</groupId>
+                <artifactId>libthrift</artifactId>
+                <version>${thrift.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
