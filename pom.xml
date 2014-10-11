@@ -17,6 +17,7 @@
         <module>mybatis</module>
         <module>netty3</module>
         <module>hessian</module>
+        <module>thrift</module>
     </modules>
 
     <properties>
