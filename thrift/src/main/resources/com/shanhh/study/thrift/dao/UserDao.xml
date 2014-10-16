@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shanhh.study.thrift.dao.UserDao">
+
+    <sql id="insertSql">
+        username,
+        password,
+        name,
+        email,
+        mobile,
+        gender,
+        createTime
+    </sql>
+
+    <insert id="create" parameterType="UserPO" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+        INSERT INTO user
+        ( <include refid="insertSql"/> )
+        VALUES
+        (
+            #{username},
+            #{password},
+            #{name},
+            #{email},
+            #{mobile},
+            #{gender},
+            now()
+        )
+    </insert>
+
+</mapper>

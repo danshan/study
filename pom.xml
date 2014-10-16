@@ -10,6 +10,7 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>core</module>
         <module>redisson</module>
         <module>spring</module>
         <module>unittest</module>
@@ -253,7 +254,6 @@
                 <groupId>com.h2database</groupId>
                 <artifactId>h2</artifactId>
                 <version>${h2.version}</version>
-                <scope>test</scope>
             </dependency>
 
             <!-- Redis -->
