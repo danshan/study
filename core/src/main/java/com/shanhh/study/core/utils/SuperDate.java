@@ -1,4 +1,4 @@
-package utils;
+package com.shanhh.study.core.utils;
 
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
