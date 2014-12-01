@@ -19,6 +19,7 @@
         <module>netty3</module>
         <module>hessian</module>
         <module>thrift</module>
+        <module>zookeeper</module>
     </modules>
 
     <properties>
@@ -72,6 +73,9 @@
 
         <!-- Thrift -->
         <thrift.version>0.9.1</thrift.version>
+
+        <!-- ZooKeeper -->
+        <zookeeper.version>3.4.5</zookeeper.version>
     </properties>
 
     <build>
@@ -288,6 +292,14 @@
                 <artifactId>libthrift</artifactId>
                 <version>${thrift.version}</version>
             </dependency>
+
+            <!-- Zookeeper -->
+            <dependency>
+                <groupId>org.apache.zookeeper</groupId>
+                <artifactId>zookeeper</artifactId>
+                <version>${zookeeper.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 </project>
