@@ -27,7 +27,7 @@ public class StringDemo {
      * SET / GET / APPEND / STRLEN
      */
     private void demoSetGetAppendStrlen() {
-        System.out.println("demo SET / GET / APPEND / STRLEN");
+        System.out.println("demo1 SET / GET / APPEND / STRLEN");
         String key = UUID.randomUUID().toString();
 
         Jedis jedis = jedisPool.getResource();
@@ -48,7 +48,7 @@ public class StringDemo {
      * INCR/DECR/INCRBY/DECRBY
      */
     private void demoIncrDecrIncrbyDecrby() {
-        System.out.println("demo INCR / DECR / INCRBY / DECRBY");
+        System.out.println("demo1 INCR / DECR / INCRBY / DECRBY");
         String key = UUID.randomUUID().toString();
 
         Jedis jedis = jedisPool.getResource();
@@ -79,7 +79,7 @@ public class StringDemo {
      * GETSET
      */
     private void demoGetSet() {
-        System.out.println("demo GETSET");
+        System.out.println("demo1 GETSET");
         String key = UUID.randomUUID().toString();
 
         Jedis jedis = jedisPool.getResource();
@@ -96,7 +96,7 @@ public class StringDemo {
      * SETEX
      */
     private void demoSetex() throws InterruptedException {
-        System.out.println("demo SETEX");
+        System.out.println("demo1 SETEX");
         String key = UUID.randomUUID().toString();
 
         Jedis jedis = jedisPool.getResource();
@@ -116,7 +116,7 @@ public class StringDemo {
      * SETNX
      */
     private void demoSetnx() {
-        System.out.println("demo SETNX");
+        System.out.println("demo1 SETNX");
         String key = UUID.randomUUID().toString();
 
         Jedis jedis = jedisPool.getResource();
@@ -133,7 +133,7 @@ public class StringDemo {
      * SETRANGE / GETRANGE
      */
     private void demoSetrangeGetrange() {
-        System.out.println("demo SETRANGE / GETRANGE");
+        System.out.println("demo1 SETRANGE / GETRANGE");
         String key = UUID.randomUUID().toString();
 
         Jedis jedis = jedisPool.getResource();
@@ -163,7 +163,7 @@ public class StringDemo {
      * SETBIT / GETBIT
      */
     private void demoSetbitGetbit() {
-        System.out.println("demo SETBIT / GETBIT");
+        System.out.println("demo1 SETBIT / GETBIT");
         String key = UUID.randomUUID().toString();
 
         Jedis jedis = jedisPool.getResource();
@@ -182,7 +182,7 @@ public class StringDemo {
      * MSET / MGET / MSETNX
      */
     private void demoMsetMgetMsetnx() {
-        System.out.println("demo MSET / MGET / MSETNX");
+        System.out.println("demo1 MSET / MGET / MSETNX");
         String key1 = UUID.randomUUID().toString();
         String key2 = UUID.randomUUID().toString();
         String key3 = UUID.randomUUID().toString();

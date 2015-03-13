@@ -27,7 +27,7 @@ public class ListDemo {
      * LPUSH/LPUSHX/LRANGE
      */
     private void demoLpushLpushxLrange() {
-        System.out.println("demo LPUSH/LPUSHX/LRANGE");
+        System.out.println("demo1 LPUSH/LPUSHX/LRANGE");
         String key = UUID.randomUUID().toString();
         String key2 = UUID.randomUUID().toString();
 
@@ -54,7 +54,7 @@ public class ListDemo {
      * LLPOP/LLEN
      */
     private void demoLpopLlen() {
-        System.out.println("demo LLPOP/LLEN");
+        System.out.println("demo1 LLPOP/LLEN");
         String key = UUID.randomUUID().toString();
 
         Jedis jedis = jedisPool.getResource();
@@ -72,7 +72,7 @@ public class ListDemo {
      * LREM/LSET/LINDEX/LTRIM
      */
     private void demoLremLsetLindexLtrim() {
-        System.out.println("demo LREM/LSET/LINDEX/LTRIM");
+        System.out.println("demo1 LREM/LSET/LINDEX/LTRIM");
         String key = UUID.randomUUID().toString();
 
         Jedis jedis = jedisPool.getResource();
@@ -104,7 +104,7 @@ public class ListDemo {
     }
 
     private void demoLinsert() {
-        System.out.println("demo LREM/LSET/LINDEX/LTRIM");
+        System.out.println("demo1 LREM/LSET/LINDEX/LTRIM");
         String key = UUID.randomUUID().toString();
 
         Jedis jedis = jedisPool.getResource();

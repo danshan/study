@@ -20,6 +20,7 @@
         <module>hessian</module>
         <module>thrift</module>
         <module>zookeeper</module>
+        <module>lucene</module>
     </modules>
 
     <properties>
@@ -76,6 +77,9 @@
 
         <!-- ZooKeeper -->
         <zookeeper.version>3.4.5</zookeeper.version>
+
+        <!-- Lucene -->
+        <lucene.version>4.10.2</lucene.version>
     </properties>
 
     <build>
@@ -313,6 +317,24 @@
                     </exclusion>
                 </exclusions>
             </dependency>
+
+            <!-- Lucene -->
+            <dependency>
+                <groupId>org.apache.lucene</groupId>
+                <artifactId>lucene-core</artifactId>
+                <version>${lucene.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.lucene</groupId>
+                <artifactId>lucene-analyzers-common</artifactId>
+                <version>${lucene.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.lucene</groupId>
+                <artifactId>lucene-queryparser</artifactId>
+                <version>${lucene.version}</version>
+            </dependency>
+
 
         </dependencies>
     </dependencyManagement>

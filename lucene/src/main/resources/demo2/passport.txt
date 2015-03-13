@@ -1,0 +1,163 @@
+# Passport 项目编程规范
+
+该文档描述了整个项目的代码相关的编程规范, 以对开发者的代码风格做统一的约束.
+
+## 代码格式
+
+* 文件编码
+
+所有文本文件使用 **utf-8** 编码格式, 如 _.java_, _.properties_, _.xml_ 等.
+
+**配置方式**
+
+以 eclipse 为例, 有 2 个地方需要修改:
+
+1\. Window > Preferences > General > Content Types, 在右边分别对所有文本文件修改下面的 _Default encoding_ 为 `utf-8`, 注意: 每修改一种格式后, 一点要点击右侧的 _Update_ 才会生效.
+
+2\. Window > Preferences > General > Workspace, 修改右边的 _Text file encoding_ 为 `UTF-8`
+
+
+* 缩进方式
+
+xml (含 html, ftl, jsp 等)使用 **2 个 space** 进行缩进; 其他文本文件是用 **4 个 Space** 替代 Tab.
+
+**配置方式**
+
+以 eclipse 为例, 有 4 个地方需要修改:
+
+1\. Window > Preferences > General > Editors > Text Editors, 勾选 `Insert spaces for tabs`.
+
+2\. Window > Preferences > Java > Code Style > Formatter, 这里一定要先 _New_ 一个继承 _Eclipse [build-in]_ 的 profile, 否则执行的修改无法保存. 在 profile 中的 _Indentation_ Tab, 修改 _Tab polocy_ 为 `Spaces only`, 并修改 _Indentation size_ 和 _Tab size_ 为 `4`.
+
+3\. Window > Preference > Web > HTML Files > Editor, 选择 `Indent using spaces`, 并修改 _Indentation size_ 为 `2`.
+
+4\. Window > Preference > XML > XML Files > Editor, 选择 `Indent using spaces`, 并修改 _Indentation size_ 为 `2`.
+
+* 换行符
+
+项目不对换行符有硬性要求, 但对于如果碰到由于 windows 和 unix 换行符不统一造成的 svn status 混乱的情况, 可以尝试修改 svn 配置文件 _$USER_HOME/.subversion/config_, 添加:
+
+    *.java = svn:eol-style=native
+    *.jsp = svn:eol-style=native
+    *.md = svn:eol-style=native
+    *.properties = svn:eol-style=native
+    *.sql = svn:eol-style=native
+
+## log 风格
+
+* log 格式
+
+在 passport_core module 中对 log4j 进行了封装, 使用方法和 log4j 类似, 而在执行时提供了更方便的日志模板替换功能:
+    
+    public void info(Object message);
+    public void info(Object message, Throwable t);
+    public void info(String pattern, Object... arguments);
+    public void info(String pattern, Throwable t, Object... arguments);
+
+用法: 
+
+    // 不含异常信息
+    logger.info("passport login success, username={0}, use {1}ms",
+		        passport.getUsername(), end - start);
+
+    // 包含异常信息
+    logger.error("execute sql failed, sql={0}", exception, sql);
+
+* log 位置
+
+log 一般只在业务层 (即 service 层) 做记录.
+
+对于复杂的业务逻辑, 或可能对服务造成性能瓶颈的地方, 需要记录方法调用时长.
+
+对于 unchecked 异常的处理, 在 catch 中的 log 要包含堆栈信息以及异常现场的参数内容.
+
+对于不必要的调试 log, 使用 info.debug().
+
+## 层次职责
+
+这里只介绍 service 服务的层次职责. 提供 service 接口支持的 module 主要分为如下几个部分:
+
+    - service.action
+    - service.action.result
+    - service.dao
+    - service.datasource
+    - service.servcie
+    - service.service.impl
+    - service.listener
+    
+* service.action
+
+service 的 SpringMVC 的 controller, 执行最简单的转发功能.
+
+* service.action.result
+
+action 的返回值.
+
+* service.dao
+
+数据库操作的接口层, 底层的由 mybitis 实现, 对应的 sql xml 在 src/main/resources 中的同名的 package 中.
+
+* service.datasource
+
+这一层通过 AOP 方式实现了根据不同的 Dao 文件名, 区分不同的数据库; 同时, 通过 Dao 中不同的 method, 实现读写分离.
+
+* service.servcie
+
+service module 提供服务的抽象接口层.
+
+* service.service.impl
+
+service.service 的接口实现逻辑, 也是整个 module 中最主要的逻辑部分.
+
+* service.listener
+
+项目中的所有监听器.
+
+
+## 异常处理
+
+需要区分 checked 异常和 unchecked 异常.
+
+对与 checked, 抛出的时候, 只要记录即可; 而对于 unchecked 异常, 在发生 unchecked 异常, 在最上层屏蔽log, 同时记录下异常信息和堆栈.
+
+下层对于可能抛出异常操作, 如果不打算做处理, 则直接往上层抛.            
+
+## 目录结构
+
+项目结构如下:
+
+    - database
+    - documents
+    - passport_core
+    - passport_fds
+    - passport_service
+    - user_service
+    - passport_ui
+
+* database
+
+创建数据库的 sql 语句. 新建数据库库时, 执行这个 sql 来创建数据库和表结构.
+
+* documents
+
+项目的开发文档
+
+* passport_core
+
+项目的公共包, 含一些公共方法, PO 对象, 已经一些常量的配置
+
+* passport_fds
+
+防马甲注册登录系统的服务层
+
+* passport_service
+
+新 passport 提供的接口服务层
+
+* user_service
+
+新 user 提供的接口服务层
+
+* passport_ui
+
+passport 系统的前端页面
