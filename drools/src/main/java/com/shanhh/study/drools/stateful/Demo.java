@@ -35,31 +35,22 @@ public class Demo {
                     ksession.insert(room);
                     Sprinkler sprinkler = new Sprinkler(room);
                     ksession.insert(sprinkler);
+
                 }
-                return null;
-            }
-        });
+                ksession.fireAllRules();
 
-
-        // Raise the alarm
-        ruleEngine.execute(new RuleEngineCallback<Object>() {
-            @Override
-            public Object fireRules(StatefulKnowledgeSession ksession) {
                 Fire kitchenFire = new Fire(name2room.get("kitchen"));
                 Fire officeFire = new Fire(name2room.get("office"));
 
-
-                Sprinkler kitchenSprinkler = new Sprinkler(kitchenFire.getRoom());
-                Sprinkler officeSprinkler = new Sprinkler(officeFire.getRoom());
                 FactHandle kitchenFireHandle = ksession.insert(kitchenFire);
                 FactHandle officeFireHandle = ksession.insert(officeFire);
                 ksession.insert(kitchenFire);
-                ksession.insert(kitchenSprinkler);
                 ksession.insert(officeFire);
-                ksession.insert(officeSprinkler);
 
-                // ksession.retract( kitchenFireHandle );
-                // ksession.retract( officeFireHandle );
+                ksession.fireAllRules();
+
+                ksession.retract( kitchenFireHandle );
+                ksession.retract( officeFireHandle );
                 return null;
             }
         });
