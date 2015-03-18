@@ -1,0 +1,23 @@
+import com.shanhh.study.drools.demo.VoteDomain;
+
+rule "blacklist 30 mins"
+
+	salience 100
+	lock-on-active true
+	when
+		$domain: VoteDomain(countIn30Mins > 150*3)
+	then
+		System.out.println($domain.getPicId() + "加入30分钟黑名单, " + $domain.getCountIn30Mins());
+
+end
+
+rule "blacklist 1 day"
+
+	salience 99
+	lock-on-active true
+	when
+		$domain: VoteDomain(countIn1Day > 2000)
+	then
+		System.out.println($domain.getPicId() + "加入每日黑名单, " + $domain.getCountIn1Day());
+
+end

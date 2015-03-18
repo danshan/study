@@ -21,6 +21,7 @@
         <module>thrift</module>
         <module>zookeeper</module>
         <module>lucene</module>
+        <module>drools</module>
     </modules>
 
     <properties>
@@ -80,6 +81,9 @@
 
         <!-- Lucene -->
         <lucene.version>4.10.2</lucene.version>
+
+        <!-- Drools -->
+        <drools.version>5.6.0.Final</drools.version>
     </properties>
 
     <build>
@@ -335,6 +339,12 @@
                 <version>${lucene.version}</version>
             </dependency>
 
+            <!-- Drools -->
+            <dependency>
+                <groupId>org.drools</groupId>
+                <artifactId>drools-spring</artifactId>
+                <version>${drools.version}</version>
+            </dependency>
 
         </dependencies>
     </dependencyManagement>
